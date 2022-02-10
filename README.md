@@ -13,8 +13,8 @@ save students lots of time.
 
 A list of functions:
 - record your grade by subjects
-- analyze your grade change
-- calculate GPA
+- compare your performance over time
+- calculate GPA for you
 
 ## user story
 
@@ -22,8 +22,10 @@ As a user, I want to be able to add a course to my lists of courses
 
 As a user, I want to be able to delete a course from my lists of courses
 
-As a user, I want to be able to create a list of courses with time 
+As a user, I want to be able to create a list of courses with name 
 
-As a user, I want to be able to view a lists of grades and total GPA and corresponding lists of courses in a time period
+As a user, I want to be able to delete a list of courses with name
 
-As a user, I want to be able to compare two lists of course with two different time
+As a user, I want to be able to view a lists of grades and total GPA and corresponding lists of courses in a course list
+
+As a user, I want to be able to compare two lists of course 

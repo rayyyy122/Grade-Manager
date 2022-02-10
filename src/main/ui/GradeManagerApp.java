@@ -105,8 +105,9 @@ public class GradeManagerApp {
         String semesterName2 = input.next();
         if (account.findSemester(semesterName1) != null
                 && account.findSemester(semesterName2) != null) {
-            List<Semester> twoSemesters = account.compare(semesterName1, semesterName2);
+            ArrayList<Semester> twoSemesters = account.compare(semesterName1, semesterName2);
             for (int i = 0; i < twoSemesters.size(); i++) {
+                System.out.println(twoSemesters.get(i).getSemesterName() + ":");
                 printSemester(twoSemesters.get(i));
             }
         } else {
@@ -116,7 +117,6 @@ public class GradeManagerApp {
 
     private void printSemester(Semester semester) {
         for (int i = 0; i < semester.getCourse().size(); i++) {
-            System.out.println(semester.getSemesterName() + ":");
             System.out.println(semester.getCourse().get(i).getName());
             System.out.println(semester.getCourse().get(i).getGrade());
             System.out.println("GPA:" + semester.calculateGPA() + "/" + TotalGPA);
