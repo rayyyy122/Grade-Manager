@@ -18,13 +18,9 @@ A list of functions:
 
 ## user story
 
-As a user, I want to be able to add an exam grade to my lists of grades 
-
-As a user, I want to be able to delete an exam grade from my lists of grades
-
 As a user, I want to be able to add a course to my lists of courses
 
-As a user, I want to be able to drop a course from my lists of courses
+As a user, I want to be able to delete a course from my lists of courses
 
 As a user, I want to be able to create a list of courses with time 
 
