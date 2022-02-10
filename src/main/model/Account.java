@@ -13,14 +13,22 @@ public class Account {
         this.account = new ArrayList<>();
     }
 
+    //MODIFIES: this
+    //EFFECTS: add a semester with its name to the account
     public boolean addSemester(String name) {
         this.name = name;
         semester = new Semester(name);
-        if (this.account.add(semester)) {
-            return true;
-        }
-        return false;
+        return this.account.add(semester);
     }
+
+//    public boolean addSemester(String name) {
+//        this.name = name;
+//        semester = new Semester(name);
+//        if (this.account.add(semester)) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     //REQUIRES: semester in the list
     //EFFECTS: delete the entered semester from the list
