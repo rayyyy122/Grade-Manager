@@ -75,6 +75,7 @@ public class AccountTest {
         Semester semester =account1.findSemester("2020");
         String name = semester.getSemesterName();
         assertEquals("2020",name);
+        assertNull(account1.findSemester("1"));
 
     }
 
