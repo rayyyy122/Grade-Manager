@@ -10,6 +10,8 @@ public class Semester {
     private String name;
     private ArrayList<Course> courses;
 
+    //MODIFIES: this
+    //EFFECTS: construct a semester containing a list of courses
     public Semester(String name) {
         this.name = name;
         this.courses = new ArrayList<>();

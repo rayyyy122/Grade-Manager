@@ -9,6 +9,8 @@ public class Account {
     private String name;
     private Semester semester;
 
+    //MODIFIES: this
+    //construct a account contains a list of semesters
     public Account() {
         this.account = new ArrayList<>();
     }

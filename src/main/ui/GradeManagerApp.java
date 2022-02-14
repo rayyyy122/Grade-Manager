@@ -63,6 +63,10 @@ public class GradeManagerApp {
     //EFFECT initializes a account
     private void initial() {
         account = new Account();
+        Course testCourse = new Course("testcourse", 100);
+        account.addSemester("testSemester");
+        Semester semester = account.findSemester("testSemester");
+        semester.addCourse(testCourse);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
@@ -115,6 +119,7 @@ public class GradeManagerApp {
         }
     }
 
+    //print a semester
     private void printSemester(Semester semester) {
         for (int i = 0; i < semester.getCourse().size(); i++) {
             System.out.println(semester.getCourse().get(i).getName());
@@ -123,6 +128,7 @@ public class GradeManagerApp {
         }
     }
 
+    // EFFECTS: manage my account by adding or deleting a semester
     private void doManageMyAccount() {
         String selection = "";
 
@@ -145,6 +151,7 @@ public class GradeManagerApp {
 
     }
 
+    // EFFECTS: manage my grade by adding or deleting a course
     private void doManageMyGrade() {
         System.out.println("enter the name of semester that you want to change");
         Semester semester = account.findSemester(input.next());
@@ -161,6 +168,7 @@ public class GradeManagerApp {
         }
     }
 
+    //EFFECTS: edit a course
     private void doEditCourse(String selection, Semester semester) {
         if (selection.equals("c")) {
             System.out.println("enter the name of the course you want to add");
