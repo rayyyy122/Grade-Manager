@@ -29,3 +29,7 @@ As a user, I want to be able to delete a list of courses with name
 As a user, I want to be able to view a lists of grades and total GPA and corresponding lists of courses in a course list
 
 As a user, I want to be able to compare two lists of course 
+
+As a user, I want to be able to save my account to file
+
+As a user, I want to be able to load my account from file
