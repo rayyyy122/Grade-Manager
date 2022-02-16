@@ -18,18 +18,18 @@ A list of functions:
 
 ## user story
 
-As a user, I want to be able to add a course to my lists of courses
+As a user, I want to be able to add a course and its grade to my semester.
 
-As a user, I want to be able to delete a course from my lists of courses
+As a user, I want to be able to delete a course from my semester.
 
-As a user, I want to be able to create a list of courses with name 
+As a user, I want to be able to create multiple semesters with their names. 
 
-As a user, I want to be able to delete a list of courses with name
+As a user, I want to be able to seek for one of my semesters and delete it.
 
-As a user, I want to be able to view a lists of grades and total GPA and corresponding lists of courses in a course list
+As a user, I want to be able to view grades of courses and total GPA in each semester. 
 
-As a user, I want to be able to compare two lists of course 
+As a user, I want to be able to choose two semester and compare the grades in them. 
 
-As a user, I want to be able to save my account to file
+As a user, I want to be able to save my account to file.
 
-As a user, I want to be able to load my account from file
+As a user, I want to be able to load my account from file.
