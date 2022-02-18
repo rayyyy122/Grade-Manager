@@ -79,10 +79,6 @@ public class Account implements Writable {
         return null;
     }
 
-    public int length() {
-        return account.size();
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
