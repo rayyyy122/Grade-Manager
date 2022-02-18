@@ -1,11 +1,14 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
-import java.util.List;
 
 //represent a semester having a list of courses with corresponding grades
-public class Semester {
+public class Semester implements Writable {
     public static final double TotalGPA = 4.33;
     private String name;
     private ArrayList<Course> courses;
@@ -53,6 +56,23 @@ public class Semester {
 
     public String getSemesterName() {
         return name;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put(name, semesterToJson());
+        return json;
+    }
+
+    private JSONArray semesterToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course c : courses) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
     }
 
 

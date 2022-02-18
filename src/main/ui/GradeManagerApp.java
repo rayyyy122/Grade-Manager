@@ -63,7 +63,7 @@ public class GradeManagerApp {
     //EFFECT initializes a account
     private void initial() {
         account = new Account();
-        Course testCourse = new Course("testcourse", 100);
+        Course testCourse = new Course("testCourse", 100);
         account.addSemester("testSemester");
         Semester semester = account.findSemester("testSemester");
         semester.addCourse(testCourse);

@@ -1,10 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
-import java.util.List;
 
 //list of semesters
-public class Account {
+public class Account implements Writable {
     private ArrayList<Semester> account;
     private String name;
     private Semester semester;
@@ -71,5 +74,26 @@ public class Account {
             }
         }
         return null;
+    }
+
+    public int length() {
+        return account.size();
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("semesters", semestersToJson());
+        return json;
+    }
+
+    private JSONArray semestersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Semester s : account) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 }
