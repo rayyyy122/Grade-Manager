@@ -51,7 +51,7 @@ public class JsonReader {
     // MODIFIES: a
     // EFFECTS: parses semesters from JSON object and adds them to Account
     private void addSemesters(Account a, JSONObject jsonObject) {
-        JSONArray jsonArray = jsonObject.getJSONArray("semesters");
+        JSONArray jsonArray = jsonObject.getJSONArray("semesters"); 
         for (Object json : jsonArray) {
             JSONObject nextSemester = (JSONObject) json;
             addSemester(a, nextSemester);
@@ -61,21 +61,15 @@ public class JsonReader {
     // MODIFIES: a
     // EFFECTS: parses semester from JSON object and adds it to Account
     private void addSemester(Account a, JSONObject jsonObject) {
-        ArrayList<Semester> semesters = a.getSemester();
-        for (int i = 0; i < semesters.size(); i++) {
-            String name = jsonObject.getString(semesters.get(i).getSemesterName());
-            JSONArray jsonArray = jsonObject.getJSONArray(name);
-            for (Object json : jsonArray) {
-                JSONObject nextCourse = (JSONObject) json;
-                addCourse(a.findSemester(name), nextCourse);
-            }
-            a.addSemester(name);
+        String des = jsonObject.getString("Description");
+        Semester s = new Semester(des);
+        JSONArray grades = jsonObject.getJSONArray("grades");
+        for (Object json : grades) {
+            JSONObject nextCourse = (JSONObject) json;
+            addCourse(s, nextCourse);
         }
-        JSONArray jsonArray = jsonObject.getJSONArray("Account");
-        for (Object json : jsonArray) {
-            JSONObject nextAccount =
+        a.addSemester(s);
 
-        }
 //        String name = jsonObject.getString();
 //        Semester semester = new Semester(name);
 //        a.addSemester(semester.getSemesterName());
@@ -84,9 +78,9 @@ public class JsonReader {
     // MODIFIES: a
     // EFFECTS: parse course from JSON object and adds it to Semester
     private void addCourse(Semester s, JSONObject jsonObject) {
-        String name = jsonObject.getString("name");
+        String courseName = jsonObject.getString("name");
         double grade = jsonObject.getDouble("grade");
-        Course course = new Course(name, grade);
+        Course course = new Course(courseName, grade);
         s.addCourse(course);
     }
 }

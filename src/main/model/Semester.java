@@ -61,7 +61,8 @@ public class Semester implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put(name, semesterToJson());
+        json.put("Description", name);
+        json.put("grades", semesterToJson());
         return json;
     }
 

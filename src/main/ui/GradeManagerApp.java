@@ -3,7 +3,11 @@ package ui;
 import model.Account;
 import model.Course;
 import model.Semester;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,8 +16,11 @@ import static model.Semester.TotalGPA;
 
 //grade manager app
 public class GradeManagerApp {
+    private static final String JSON_SOURCE = "./data/account.json";
     private Account account;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     //EFFECTS: run the grade manager app
     public GradeManagerApp() {
@@ -25,6 +32,8 @@ public class GradeManagerApp {
     public void runGradeManager() {
         boolean keepGoing = true;
         String command = null;
+        jsonWriter = new JsonWriter(JSON_SOURCE);
+        jsonReader = new JsonReader(JSON_SOURCE);
 
         initial();
 
@@ -52,8 +61,10 @@ public class GradeManagerApp {
             doCompareMyGrade();
         } else if (command.equals("m")) {
             doManageMyAccount();
+            saveAccount();
         } else if (command.equals("g")) {
             doManageMyGrade();
+            saveAccount();
         } else {
             System.out.println("input not valid");
         }
@@ -69,6 +80,7 @@ public class GradeManagerApp {
         semester.addCourse(testCourse);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        loadAccount();
     }
 
     // EFFECTS: displays menu of options to user
@@ -147,6 +159,7 @@ public class GradeManagerApp {
             String name = input.next();
             account.deleteSemester(name);
             System.out.println("delete successfully!");
+
         }
 
     }
@@ -182,6 +195,29 @@ public class GradeManagerApp {
             System.out.println("enter the name of the course you want to delete");
             semester.deleteCourse(input.next());
             System.out.println("delete successfully!");
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveAccount() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(account);
+            jsonWriter.close();
+            System.out.println("Saved Success");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_SOURCE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadAccount() {
+        try {
+            account = jsonReader.read();
+            System.out.println("Loaded Success");
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_SOURCE);
         }
     }
 }

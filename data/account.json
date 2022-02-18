@@ -1,0 +1,13 @@
+{"semesters": [
+    {
+        "Description": "testSemester",
+        "grades": [{
+            "grade": 100,
+            "name": "testCourse"
+        }]
+    },
+    {
+        "Description": "2020",
+        "grades": []
+    }
+]}

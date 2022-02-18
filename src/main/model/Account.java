@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Account implements Writable {
     private ArrayList<Semester> account;
     private String name;
-    private Semester semester;
 
     //MODIFIES: this
     //construct a account contains a list of semesters
@@ -22,8 +21,12 @@ public class Account implements Writable {
     //EFFECTS: add a semester with its name to the account
     public boolean addSemester(String name) {
         this.name = name;
-        semester = new Semester(name);
-        return this.account.add(semester);
+        Semester s = new Semester(name);
+        return this.account.add(s);
+    }
+
+    public boolean addSemester(Semester s) {
+        return this.account.add(s);
     }
 
 //    public boolean addSemester(String name) {

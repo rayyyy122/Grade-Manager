@@ -1,0 +1,28 @@
+{"semesters": [
+    {
+        "Description": "2020",
+        "grades": [
+            {
+                "grade": 88,
+                "name": "math"
+            },
+            {
+                "grade": 93,
+                "name": "cpsc"
+            }
+        ]
+    },
+    {
+        "Description": "2021",
+        "grades": [
+            {
+                "grade": 77,
+                "name": "phys"
+            },
+            {
+                "grade": 83,
+                "name": "chem"
+            }
+        ]
+    }
+]}
