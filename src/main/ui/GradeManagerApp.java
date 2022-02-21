@@ -1,6 +1,6 @@
 package ui;
 
-import exception.NotIntException;
+import exception.NotCourseInTheListException;
 import model.Account;
 import model.Course;
 import model.Semester;
@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 import static model.Semester.TotalGPA;
@@ -159,8 +158,13 @@ public class GradeManagerApp {
         } else {
             System.out.println("enter semester name you want to delete");
             String name = input.next();
-            account.deleteSemester(name);
-            System.out.println("delete successfully!");
+            if (account.findSemester(name) != null) {
+                account.deleteSemester(name);
+                System.out.println("delete successfully!");
+            } else {
+                System.out.println("cannot find such a semester!");
+            }
+
 
         }
 
@@ -182,8 +186,9 @@ public class GradeManagerApp {
             } catch (InputMismatchException e) {
                 System.out.println("input is not valid! Please enter a integer!");
             }
+
         } else {
-            System.out.println("there doesn't exist such a course!");
+            System.out.println("there doesn't exist such a semester!");
         }
     }
 
@@ -199,8 +204,12 @@ public class GradeManagerApp {
             System.out.println("add successfully!");
         } else {
             System.out.println("enter the name of the course you want to delete");
-            semester.deleteCourse(input.next());
-            System.out.println("delete successfully!");
+            try {
+                semester.deleteCourse(input.next());
+                System.out.println("delete successfully!");
+            } catch (NotCourseInTheListException e) {
+                System.out.println("cannot find such a course!");
+            }
         }
     }
 

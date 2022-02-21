@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import exception.NotCourseInTheListException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,10 +38,20 @@ public class SemesterTest {
 
     @Test
     void deleteCourse() {
-        ArrayList<Course> course = semester1.deleteCourse("MATH100");
+        ArrayList<Course> course = null;
+        try {
+            course = semester1.deleteCourse("MATH100");
+        } catch (NotCourseInTheListException e) {
+            //
+        }
         assertEquals(1, course.size());
         semester1.addCourse(course4);
-        ArrayList<Course> course2 = semester1.deleteCourse("GEOG100");
+        ArrayList<Course> course2 = null;
+        try {
+            course2 = semester1.deleteCourse("GEOG100");
+        } catch (NotCourseInTheListException e) {
+            //
+        }
         assertEquals(1, course2.size());
     }
 

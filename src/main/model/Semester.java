@@ -1,6 +1,7 @@
 package model;
 
 
+import exception.NotCourseInTheListException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -8,7 +9,7 @@ import persistence.Writable;
 import java.util.ArrayList;
 
 //represent a semester having a list of courses with corresponding grades
-public class Semester implements Writable {
+public class Semester extends NotCourseInTheListException implements Writable {
     public static final double TotalGPA = 4.33;
     private String name;
     private ArrayList<Course> courses;
@@ -31,11 +32,15 @@ public class Semester implements Writable {
     //REQUIRES: the list is not empty and must enter the name that exist in the list
     //MODIFIES: this
     //EFFECTS: delete the course with the given name
-    public ArrayList<Course> deleteCourse(String courseName) {
+    public ArrayList<Course> deleteCourse(String courseName) throws NotCourseInTheListException {
+        int originalSize = courses.size();
         for (int position = 0; position < courses.size(); position++) {
             if (courses.get(position).getName().equals(courseName)) {
                 courses.remove(position);
             }
+        }
+        if (courses.size() == originalSize) {
+            throw new NotCourseInTheListException();
         }
         return courses;
     }

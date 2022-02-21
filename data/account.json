@@ -8,16 +8,10 @@
     },
     {
         "Description": "2020",
-        "grades": [{
-            "grade": 88,
-            "name": "math"
-        }]
+        "grades": []
     },
     {
         "Description": "2021",
-        "grades": [{
-            "grade": 90,
-            "name": "cpsc"
-        }]
+        "grades": []
     }
 ]}
