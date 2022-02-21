@@ -53,6 +53,11 @@ public class SemesterTest {
             //
         }
         assertEquals(1, course2.size());
+        try {
+            ArrayList<Course> course3 =semester1.deleteCourse("c");
+        } catch (NotCourseInTheListException e) {
+            System.out.println("cannot find such a course!");
+        }
     }
 
     @Test
