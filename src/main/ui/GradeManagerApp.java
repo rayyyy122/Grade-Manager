@@ -1,5 +1,6 @@
 package ui;
 
+import exception.NotIntException;
 import model.Account;
 import model.Course;
 import model.Semester;
@@ -9,6 +10,7 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -175,14 +177,18 @@ public class GradeManagerApp {
                 System.out.println("d for delete a course with grade");
                 selection = input.next();
             }
-            doEditCourse(selection, semester);
+            try {
+                doEditCourse(selection, semester);
+            } catch (InputMismatchException e) {
+                System.out.println("input is not valid! Please enter a integer!");
+            }
         } else {
             System.out.println("there doesn't exist such a course!");
         }
     }
 
     //EFFECTS: edit a course
-    private void doEditCourse(String selection, Semester semester) {
+    private void doEditCourse(String selection, Semester semester) throws InputMismatchException {
         if (selection.equals("c")) {
             System.out.println("enter the name of the course you want to add");
             String name = input.next();
