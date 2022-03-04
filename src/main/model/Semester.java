@@ -67,7 +67,7 @@ public class Semester extends NotCourseInTheListException implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Description", name);
-        json.put("grades", semesterToJson());
+        json.put("courses", semesterToJson());
         return json;
     }
 

@@ -1,17 +1,23 @@
 {"semesters": [
     {
-        "Description": "testSemester",
-        "grades": [{
-            "grade": 100,
-            "name": "testCourse"
-        }]
+        "courses": [
+            {
+                "grade": 90,
+                "name": "math"
+            },
+            {
+                "grade": 88,
+                "name": "cpsc"
+            }
+        ],
+        "Description": "2020"
     },
     {
-        "Description": "2020",
-        "grades": []
+        "courses": [],
+        "Description": "semester"
     },
     {
-        "Description": "2021",
-        "grades": []
+        "courses": [],
+        "Description": "2021"
     }
 ]}

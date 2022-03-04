@@ -63,7 +63,7 @@ public class JsonReader {
     private void addSemester(Account a, JSONObject jsonObject) {
         String des = jsonObject.getString("Description");
         Semester s = new Semester(des);
-        JSONArray grades = jsonObject.getJSONArray("grades");
+        JSONArray grades = jsonObject.getJSONArray("courses");
         for (Object json : grades) {
             JSONObject nextCourse = (JSONObject) json;
             addCourse(s, nextCourse);

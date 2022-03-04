@@ -1,7 +1,7 @@
 {"semesters": [
     {
         "Description": "2020",
-        "grades": [
+        "courses": [
             {
                 "grade": 88,
                 "name": "math"
@@ -14,7 +14,7 @@
     },
     {
         "Description": "2021",
-        "grades": [
+        "courses": [
             {
                 "grade": 77,
                 "name": "phys"
