@@ -1,4 +1,4 @@
-package model;
+package persistenceTest;
 
 import model.Account;
 import model.Semester;
