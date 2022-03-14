@@ -1,9 +1,14 @@
 package ui.InitialPanel;
 
+import model.Semester;
+import ui.CompareTable;
+import ui.GradeManagerAppGUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ComparePanel extends JPanel implements ActionListener {
     protected JTextField textField1;
@@ -68,6 +73,20 @@ public class ComparePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String name1 = textField1.getText();
+        String name2 = textField2.getText();
+        ArrayList<String> semesterNames = new ArrayList<>();
+        ArrayList<Semester> semesters = GradeManagerAppGUI.account.getSemester();
+        for (int i = 0; i < semesters.size(); i++) {
+            String name = semesters.get(i).getSemesterName();
+            semesterNames.add(name);
+        }
+        if (!semesterNames.contains(name1) || !semesterNames.contains(name2)) {
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, "there aren't such semesters!");
+        } else {
+            CompareTable.createAndShowTable(name1, name2);
+        }
 
     }
 }
