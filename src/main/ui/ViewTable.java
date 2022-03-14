@@ -3,15 +3,11 @@ package ui;
 import model.Account;
 import model.Course;
 import model.Semester;
-import ui.InitialPanel.ViewPanel;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class ViewTable extends JPanel {

@@ -1,8 +1,4 @@
-package ui.InitialPanel;
-
-import model.Account;
-import ui.AddCoursePanel;
-import ui.DeleteCoursePanel;
+package ui;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

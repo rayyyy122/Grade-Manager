@@ -1,8 +1,6 @@
-package ui.InitialPanel;
+package ui;
 
 import model.Semester;
-import ui.CompareTable;
-import ui.GradeManagerAppGUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,56 +8,50 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class ComparePanel extends JPanel implements ActionListener {
-    protected JTextField textField1;
-    protected JTextField textField2;
-    protected JLabel label1;
-    protected JLabel label2;
+public class ViewPanel extends JPanel implements ActionListener {
+    protected JTextField textField;
+    protected JLabel label;
+    private String semesterName;
+
 
     private static final String newline = "\n";
 
-    public ComparePanel() {
+    public ViewPanel() {
         super(new GridBagLayout());
 
-        textField1 = new JTextField(40);
-        textField1.addActionListener(this);
+        textField = new JTextField(40);
+        textField.addActionListener((ActionListener) this);
 
-        textField2 = new JTextField(40);
-        textField2.addActionListener(this);
-
-        label1 = new JLabel("Enter the name of the first semester");
-        label2 = new JLabel("Enter the name of the second semester");
-
-
+        label = new JLabel("Enter the semester you want to view");
 
         //Add Components to this panel.
         GridBagConstraints c = new GridBagConstraints();
         c.gridwidth = GridBagConstraints.REMAINDER;
 
-        c.fill = GridBagConstraints.HORIZONTAL;
         c.fill = GridBagConstraints.BOTH;
         c.weightx = 1.0;
         c.weighty = 1.0;
-        add(label1, c);
-        add(textField1, c);
-        add(label2, c);
-        add(textField2, c);
+        add(label, c);
+        add(textField, c);
 
+        InputMap im = textField.getInputMap();
+        ActionMap am = textField.getActionMap();
 
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("compare my grade");
+        JFrame frame = new JFrame("view my grade");
 
 
         //Add contents to the window.
-        frame.add(new ComparePanel());
+        frame.add(new ViewPanel());
 
         //Display the window.
         frame.pack();
         frame.setVisible(true);
     }
+
 
     public static void main(String[] args) {
         //Schedule a job for the event dispatch thread:
@@ -71,22 +63,25 @@ public class ComparePanel extends JPanel implements ActionListener {
         });
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        String name1 = textField1.getText();
-        String name2 = textField2.getText();
+        semesterName = textField.getText();
         ArrayList<String> semesterNames = new ArrayList<>();
         ArrayList<Semester> semesters = GradeManagerAppGUI.account.getSemester();
         for (int i = 0; i < semesters.size(); i++) {
             String name = semesters.get(i).getSemesterName();
             semesterNames.add(name);
         }
-        if (!semesterNames.contains(name1) || !semesterNames.contains(name2)) {
+        Semester semester = GradeManagerAppGUI.account.findSemester(semesterName);
+        if (!semesterNames.contains(semesterName)) {
             JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame, "there aren't such semesters!");
-        } else {
-            CompareTable.createAndShowTable(name1, name2);
+            JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
+        } else if (semester.getCourse().isEmpty()) {
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, "the semester is empty!");
+        } else  {
+            ViewTable.createAndShowTable(semesterName);
         }
-
     }
 }

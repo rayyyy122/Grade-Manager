@@ -1,7 +1,4 @@
-package ui.InitialPanel;
-
-import ui.AddSemesterPanel;
-import ui.DeleteSemesterPanel;
+package ui;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

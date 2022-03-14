@@ -1,10 +1,9 @@
-package ui.InitialPanel;
+package ui;
 
 import model.Account;
 import model.Semester;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.GradeManagerAppGUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,10 +1,8 @@
 package ui;
 
 import model.Account;
-import ui.InitialPanel.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,11 +15,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     JButton quit = new JButton("quit");
     private static final String JSON_SOURCE = "./data/account.json";
     public static final Account account = new Account();
-
-
-    public static final int WIDTH = 600;
-    public static final int HEIGHT = 500;
-
 
 
     public GradeManagerAppGUI() {

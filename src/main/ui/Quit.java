@@ -1,9 +1,7 @@
-package ui.InitialPanel;
+package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Quit extends JPanel {
 
