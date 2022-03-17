@@ -7,15 +7,19 @@ import model.Semester;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class ViewTable extends JPanel {
+public class ViewTable extends JPanel implements ActionListener {
     private Account account = GradeManagerAppGUI.account;
     String[] columnNames = {"semester name",
             "course name",
             "grade",
             "GPA"};
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("view my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
 
 
 
@@ -27,23 +31,15 @@ public class ViewTable extends JPanel {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(columnNames);
         JTable table = new JTable(model);
-
         addFirstRow(courses, semesterName, model, g);
-
-        for (int i = 1; i < courses.size(); i++) {
-            String courseName = courses.get(i).getName();
-            Double courseGrade = courses.get(i).getGrade();
-            Vector vector2 = new Vector(4);
-            vector2.add(0, "");
-            vector2.add(1, courseName);
-            vector2.add(2, courseGrade);
-            vector2.add(3, "");
-            model.addRow(vector2);
-        }
+        addLeftRows(courses, semesterName, model, g);
         table.setPreferredScrollableViewportSize(new Dimension(500, 70));
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     private void addFirstRow(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
@@ -59,9 +55,22 @@ public class ViewTable extends JPanel {
         }
     }
 
+    private void addLeftRows(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
+        for (int i = 1; i < courses.size(); i++) {
+            String courseName = courses.get(i).getName();
+            Double courseGrade = courses.get(i).getGrade();
+            Vector vector2 = new Vector(4);
+            vector2.add(0, "");
+            vector2.add(1, courseName);
+            vector2.add(2, courseGrade);
+            vector2.add(3, "");
+            model.addRow(vector2);
+        }
+    }
+
     public static void createAndShowTable(String name) {
         //Create and set up the window.
-        JFrame frame = new JFrame("view my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
+
 
 
         //Create and set up the content pane.
@@ -73,7 +82,13 @@ public class ViewTable extends JPanel {
         //Display the window.
         frame.pack();
         frame.setVisible(true);
+
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        frame.setVisible(false);
 
+
+    }
 }

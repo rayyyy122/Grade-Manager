@@ -14,32 +14,25 @@ public class AddCoursePanel extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JTextField textField1;
     protected JTextField textField2;
-    protected JLabel label;
-    protected JLabel label1;
-    protected JLabel label2;
+    protected JLabel label = new JLabel("enter the semester you want to change");
+    protected JLabel label1 = new JLabel("enter the name of the course you want to add");
+    protected JLabel label2 = new JLabel("enter the grade of the course you want to add");
     private String semesterName;
     private String courseName;
     private int courseGrade;
     private Course course;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("add a course");
 
-    private static final String newline = "\n";
 
     public AddCoursePanel() {
-
         super(new GridBagLayout());
-
         textField = new JTextField(40);
         textField.addActionListener(this);
-
         textField1 = new JTextField(40);
         textField1.addActionListener(this);
-
         textField2 = new JTextField(40);
         textField2.addActionListener(this);
-
-        label = new JLabel("enter the semester you want to change");
-        label1 = new JLabel("enter the name of the course you want to add");
-        label2 = new JLabel("enter the grade of the course you want to add");
 
         //Add Components to this panel.
         GridBagConstraints c = new GridBagConstraints();
@@ -55,13 +48,15 @@ public class AddCoursePanel extends JPanel implements ActionListener {
         add(textField1, c);
         add(label2, c);
         add(textField2, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
 
 
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("add a course");
 
 
         //Add contents to the window.
@@ -100,23 +95,26 @@ public class AddCoursePanel extends JPanel implements ActionListener {
         courseName = textField1.getText();
         String gradeString = textField2.getText();
         try {
-            courseGrade = Integer.parseInt(gradeString);
-            course = new Course(courseName, courseGrade);
-
-            if (!containSemester(semesterName)) {
-                JFrame frame = new JFrame();
-                JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
+            if (e.getActionCommand().equals("back")) {
+                frame.setVisible(false);
             } else {
-                Semester semester = GradeManagerAppGUI.account.findSemester(semesterName);
-                semester.addCourse(course);
-                JFrame frame = new JFrame();
-                JOptionPane.showMessageDialog(frame, "add successful!");
+                courseGrade = Integer.parseInt(gradeString);
+                course = new Course(courseName, courseGrade);
+                if (!containSemester(semesterName)) {
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
+                } else {
+                    Semester semester = GradeManagerAppGUI.account.findSemester(semesterName);
+                    semester.addCourse(course);
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "add successful!");
+                }
+
             }
         } catch (NumberFormatException e1) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "please enter a proper form of grade!");
         }
-
 
 
     }

@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class DeleteSemesterPanel extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JLabel label;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("delete a semester");
 
-    private static final String newline = "\n";
 
     public DeleteSemesterPanel() {
         super(new GridBagLayout());
@@ -32,11 +33,13 @@ public class DeleteSemesterPanel extends JPanel implements ActionListener {
         c.weighty = 1.0;
         add(label, c);
         add(textField, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("delete a semester");
 
 
         //Add contents to the window.
@@ -56,7 +59,9 @@ public class DeleteSemesterPanel extends JPanel implements ActionListener {
             String name = semesters.get(i).getSemesterName();
             semesterNames.add(name);
         }
-        if (!semesterNames.contains(semesterName)) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (!semesterNames.contains(semesterName)) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
         } else {

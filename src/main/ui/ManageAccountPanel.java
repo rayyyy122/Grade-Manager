@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class ManageAccountPanel extends JPanel implements ActionListener {
     JButton add = new JButton("add a semester");
     JButton delete = new JButton("delete a semester");
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("manage my account");
 
     public ManageAccountPanel() {
         add.setVerticalTextPosition(AbstractButton.CENTER);
@@ -17,10 +19,13 @@ public class ManageAccountPanel extends JPanel implements ActionListener {
         delete.setHorizontalTextPosition(AbstractButton.CENTER);
         delete.addActionListener(this);
         add(delete);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     public static void createAndShowPanel() {
-        JFrame frame = new JFrame("manage my account");
+
 
 
         //Create and set up the content pane.
@@ -44,7 +49,9 @@ public class ManageAccountPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("add a semester")) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (e.getActionCommand().equals("add a semester")) {
             AddSemesterPanel.createAndShowPanel();
         } else {
             DeleteSemesterPanel.createAndShowPanel();

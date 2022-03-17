@@ -13,6 +13,8 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JLabel label;
     private String semesterName;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("add a semester");
 
 
     private static final String newline = "\n";
@@ -35,6 +37,9 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
         c.weighty = 1.0;
         add(label, c);
         add(textField, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
 
 
 
@@ -42,7 +47,7 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("add a semester");
+
 
 
         //Add contents to the window.
@@ -55,9 +60,14 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        semesterName = textField.getText();
-        GradeManagerAppGUI.account.addSemester(semesterName);
-        JFrame frame = new JFrame();
-        JOptionPane.showMessageDialog(frame, "add successful!");
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else {
+            semesterName = textField.getText();
+            GradeManagerAppGUI.account.addSemester(semesterName);
+            JFrame frame = new JFrame();
+            JOptionPane.showMessageDialog(frame, "add successful!");
+        }
+
     }
 }

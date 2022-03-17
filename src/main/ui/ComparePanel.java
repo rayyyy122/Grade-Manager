@@ -13,8 +13,11 @@ public class ComparePanel extends JPanel implements ActionListener {
     protected JTextField textField2;
     protected JLabel label1;
     protected JLabel label2;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("compare my grade");
 
-    private static final String newline = "\n";
+
+
 
     public ComparePanel() {
         super(new GridBagLayout());
@@ -42,13 +45,16 @@ public class ComparePanel extends JPanel implements ActionListener {
         add(textField1, c);
         add(label2, c);
         add(textField2, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
 
 
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("compare my grade");
+
 
 
         //Add contents to the window.
@@ -79,7 +85,9 @@ public class ComparePanel extends JPanel implements ActionListener {
             String name = semesters.get(i).getSemesterName();
             semesterNames.add(name);
         }
-        if (!semesterNames.contains(name1) || !semesterNames.contains(name2)) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (!semesterNames.contains(name1) || !semesterNames.contains(name2)) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "there aren't such semesters!");
         } else {

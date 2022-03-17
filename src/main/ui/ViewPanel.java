@@ -12,6 +12,8 @@ public class ViewPanel extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JLabel label;
     private String semesterName;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("view my grade");
 
 
     private static final String newline = "\n";
@@ -33,15 +35,17 @@ public class ViewPanel extends JPanel implements ActionListener {
         c.weighty = 1.0;
         add(label, c);
         add(textField, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
 
-        InputMap im = textField.getInputMap();
-        ActionMap am = textField.getActionMap();
+
 
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("view my grade");
+
 
 
         //Add contents to the window.
@@ -74,7 +78,9 @@ public class ViewPanel extends JPanel implements ActionListener {
             semesterNames.add(name);
         }
         Semester semester = GradeManagerAppGUI.account.findSemester(semesterName);
-        if (!semesterNames.contains(semesterName)) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (!semesterNames.contains(semesterName)) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
         } else if (semester.getCourse().isEmpty()) {
@@ -83,5 +89,6 @@ public class ViewPanel extends JPanel implements ActionListener {
         } else  {
             ViewTable.createAndShowTable(semesterName);
         }
+
     }
 }

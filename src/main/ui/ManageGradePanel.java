@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 public class ManageGradePanel extends JPanel implements ActionListener {
     protected JButton add;
     protected JButton delete;
+    protected JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("manage my grade");
 
 
     public ManageGradePanel() {
@@ -20,11 +22,12 @@ public class ManageGradePanel extends JPanel implements ActionListener {
         delete.setHorizontalTextPosition(AbstractButton.CENTER);
         delete.addActionListener(this);
         add(delete);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     public static void createAndShowPanel() {
-        JFrame frame = new JFrame("manage my grade");
-
 
         //Create and set up the content pane.
         ManageGradePanel newContentPane = new ManageGradePanel();
@@ -47,7 +50,9 @@ public class ManageGradePanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("add a course")) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (e.getActionCommand().equals("add a course")) {
             AddCoursePanel.createAndShowPanel();
         } else {
             DeleteCoursePanel.createAndShowPanel();

@@ -19,6 +19,8 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
     private JsonWriter jsonWriter = new JsonWriter(JSON_SOURCE);
     private JsonReader jsonReader = new JsonReader(JSON_SOURCE);
     private Account account;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("save options");
 
     public SaveOptionsPanel() {
         save = new JButton("save to file");
@@ -31,11 +33,12 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
         load.setHorizontalTextPosition(AbstractButton.CENTER);
         load.addActionListener(this);
         add(load);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     public static void createAndShowPanel() {
-        JFrame frame = new JFrame("save options");
-
 
         //Create and set up the content pane.
         SaveOptionsPanel newContentPane = new SaveOptionsPanel();
@@ -81,7 +84,9 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("save to file")) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (e.getActionCommand().equals("save to file")) {
             saveAccount();
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "save successful!");

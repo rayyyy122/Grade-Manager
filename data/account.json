@@ -1,22 +1,10 @@
 {"semesters": [
     {
-        "courses": [
-            {
-                "grade": 88,
-                "name": "cpsc"
-            },
-            {
-                "grade": 98,
-                "name": "math"
-            }
-        ],
-        "Description": "2020"
+        "courses": [],
+        "Description": "fuck"
     },
     {
-        "courses": [{
-            "grade": 88,
-            "name": "phys"
-        }],
-        "Description": "2021"
+        "courses": [],
+        "Description": "fuckfuck"
     }
 ]}

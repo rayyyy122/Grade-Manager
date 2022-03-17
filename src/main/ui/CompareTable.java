@@ -7,15 +7,19 @@ import model.Semester;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class CompareTable extends JPanel {
+public class CompareTable extends JPanel implements ActionListener {
     private Account account = GradeManagerAppGUI.account;
     String[] columnNames = {"semester name",
             "course name",
             "grade",
             "GPA"};
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("compare my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
 
     public CompareTable(String semesterName1, String semesterName2) {
         super(new GridLayout(1, 0));
@@ -36,6 +40,9 @@ public class CompareTable extends JPanel {
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
 
     }
 
@@ -67,7 +74,6 @@ public class CompareTable extends JPanel {
 
     public static void createAndShowTable(String name1, String name2) {
         //Create and set up the window.
-        JFrame frame = new JFrame("compare my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
 
 
         //Create and set up the content pane.
@@ -82,5 +88,10 @@ public class CompareTable extends JPanel {
     }
 
 
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        }
+    }
 }

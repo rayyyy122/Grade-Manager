@@ -14,6 +14,8 @@ public class DeleteCoursePanel extends JPanel implements ActionListener {
     protected JTextField textField1;
     protected JLabel label;
     protected JLabel label1;
+    private JButton button = new JButton("back");
+    public static final JFrame frame = new JFrame("delete a course");
 
     private static final String newline = "\n";
 
@@ -42,11 +44,14 @@ public class DeleteCoursePanel extends JPanel implements ActionListener {
         add(textField, c);
         add(label1, c);
         add(textField1, c);
+        button.setHorizontalTextPosition(AbstractButton.CENTER);
+        button.addActionListener(this);
+        add(button);
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
-        JFrame frame = new JFrame("delete a course");
+
 
 
         //Add contents to the window.
@@ -67,14 +72,15 @@ public class DeleteCoursePanel extends JPanel implements ActionListener {
             String name = semesters.get(i).getSemesterName();
             semesterNames.add(name);
         }
-        if (!semesterNames.contains(semesterName)) {
+        if (e.getActionCommand().equals("back")) {
+            frame.setVisible(false);
+        } else if (!semesterNames.contains(semesterName)) {
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
         } else {
             Semester s = GradeManagerAppGUI.account.findSemester(semesterName);
             try {
                 s.deleteCourse(courseName);
-                JFrame frame = new JFrame();
                 JOptionPane.showMessageDialog(frame, "delete successful!");
             } catch (NotCourseInTheListException ex) {
                 JFrame frame = new JFrame();
