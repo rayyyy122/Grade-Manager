@@ -1,13 +1,9 @@
 package ui;
 
-import model.Account;
-import model.Semester;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class AddSemesterPanel extends JPanel implements ActionListener {
     protected JTextField textField;

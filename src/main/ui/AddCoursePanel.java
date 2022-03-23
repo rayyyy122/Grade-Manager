@@ -1,6 +1,5 @@
 package ui;
 
-import model.Account;
 import model.Course;
 import model.Semester;
 
@@ -100,16 +99,15 @@ public class AddCoursePanel extends JPanel implements ActionListener {
             } else {
                 courseGrade = Integer.parseInt(gradeString);
                 course = new Course(courseName, courseGrade);
-                if (!containSemester(semesterName)) {
-                    JFrame frame = new JFrame();
+                if (courseGrade < 0 || courseGrade > 100) {
+                    JOptionPane.showMessageDialog(frame, "grade should not be negative or exceed 100!");
+                } else if (!containSemester(semesterName)) {
                     JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
                 } else {
                     Semester semester = GradeManagerAppGUI.account.findSemester(semesterName);
                     semester.addCourse(course);
-                    JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "add successful!");
                 }
-
             }
         } catch (NumberFormatException e1) {
             JFrame frame = new JFrame();

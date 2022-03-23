@@ -11,14 +11,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SemesterTest {
     private Semester semester1;
+    private Semester semester2;
     private Course course1 = new Course("MATH100", 91);
     private Course course2 = new Course("CHEM100", 85);
     private Course course3 = new Course("STAT200", 82);
     private Course course4 = new Course("GEOG100", 86);
     private Course course5 = new Course("PHYS100", 77);
+    private Course course6 = new Course("SOCI200", 2);
+    private Course course7 = new Course("70", 70);
+    private Course course8 = new Course("72", 72);
 
     @BeforeEach
     void runBefore() {
+        semester2 = new Semester("2021");
         semester1 = new Semester("2020");
         semester1.addCourse(course1);
         semester1.addCourse(course2);
@@ -62,8 +67,38 @@ public class SemesterTest {
 
     @Test
     void testCalculateGPA() {
-        assertEquals(3.8104, semester1.calculateGPA());
+        assertEquals(4.2, semester1.calculateGPA());
         semester1.addCourse(course5);
-        assertEquals(3.6516333333333333, semester1.calculateGPA());
+        assertEquals(3.9, semester1.calculateGPA());
+        semester2.addCourse(course1);
+        assertEquals(4.33, semester2.calculateGPA());
+        semester2.addCourse(course6);
+        assertEquals(1.00, semester2.calculateGPA());
+        semester2.addCourse(course1);
+        assertEquals(2.10, semester2.calculateGPA());
+        Semester semester = new Semester("67");
+        Course course = new Course("67", 67);
+        semester.addCourse(course);
+        Double d = semester.calculateGPA();
+        assertEquals(2.6, d);
+
+
+    }
+
+    @Test
+    void testMoreCalculateGPA() {
+        semester2.addCourse(course7);
+        assertEquals(2.80, semester2.calculateGPA());
+        Semester semester = new Semester("72");
+        semester.addCourse(course8);
+        Double d = semester.calculateGPA();
+        assertEquals(2.95, d);
+        Semester semester3 = new Semester("87");
+        Course course = new Course("87", 87);
+        semester3.addCourse(course);
+        assertEquals(4.1, semester3.calculateGPA());
+        Semester semester4 = new Semester("77");
+        semester4.addCourse(course5);
+        assertEquals(3.4, semester4.calculateGPA());
     }
 }

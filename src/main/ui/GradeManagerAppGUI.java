@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 public class GradeManagerAppGUI extends JPanel implements ActionListener {
     JButton view = new JButton("view my grade");
+    JButton viewInfo = new JButton("view information");
     JButton compare = new JButton("compare my grade");
     JButton manageAccount = new JButton("manage my account");
     JButton manageGrade = new JButton("manage my grade");
@@ -20,6 +21,8 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     public GradeManagerAppGUI() {
         view.setHorizontalTextPosition(AbstractButton.CENTER);
         view.addActionListener(this);
+        viewInfo.setHorizontalTextPosition(AbstractButton.CENTER);
+        viewInfo.addActionListener(this);
         compare.setHorizontalTextPosition(AbstractButton.CENTER);
         compare.addActionListener(this);
         manageAccount.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -31,6 +34,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
         quit.setHorizontalTextPosition(AbstractButton.CENTER);
         quit.addActionListener(this);
         add(view);
+        add(viewInfo);
         add(compare);
         add(manageAccount);
         add(manageGrade);
@@ -38,7 +42,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
         add(quit);
 
     }
-
 
 
     public static void createAndShowGui() {
@@ -56,8 +59,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     }
 
 
-
-
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -72,6 +73,14 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("view my grade")) {
             ViewPanel.createAndShowPanel();
+        } else if (e.getActionCommand().equals("view information")) {
+            if (account.getSemester().isEmpty()) {
+                JFrame frame = new JFrame();
+                JOptionPane.showMessageDialog(frame, "your account is empty!");
+            } else {
+                ViewSemesterNamePanel.createAndShowTable();
+            }
+
         } else if (e.getActionCommand().equals("compare my grade")) {
             ComparePanel.createAndShowPanel();
         } else if (e.getActionCommand().equals("manage my account")) {

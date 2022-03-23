@@ -18,7 +18,6 @@ public class CompareTable extends JPanel implements ActionListener {
             "course name",
             "grade",
             "GPA"};
-    private JButton button = new JButton("back");
     public static final JFrame frame = new JFrame("compare my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
 
     public CompareTable(String semesterName1, String semesterName2) {
@@ -40,9 +39,7 @@ public class CompareTable extends JPanel implements ActionListener {
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-        button.setHorizontalTextPosition(AbstractButton.CENTER);
-        button.addActionListener(this);
-        add(button);
+
 
     }
 
@@ -90,8 +87,6 @@ public class CompareTable extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("back")) {
-            frame.setVisible(false);
-        }
+
     }
 }

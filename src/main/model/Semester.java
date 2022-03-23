@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 //represent a semester having a list of courses with corresponding grades
@@ -56,7 +57,35 @@ public class Semester extends NotCourseInTheListException implements Writable {
         for (int position = 0; position < courses.size(); position++) {
             a = courses.get(position).getGrade() + a;
         }
-        return a * TotalGPA / (courses.size() * 100);
+        Double d = a / courses.size();
+
+        double d1 = (Math.round(d));
+        Double d2 = convertPercentage(d1);
+        return d2;
+    }
+
+    public double convertPercentage(double d) {
+        if (d >= 90.0) {
+            return TotalGPA;
+        } else if (d >= 50.0 && d <= 65.0) {
+            return 1.00 + (d - 50) * 0.1;
+        } else if (d >= 66.0 && d <= 69.0) {
+            Double d1 = 2.55 + (d - 66) * 0.05;
+            BigDecimal b = new BigDecimal(d1);
+            return b.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        } else if (d == 70.0 || d == 71.0) {
+            return 2.80 + (d - 70) * 0.1;
+        } else if (d == 72.0) {
+            return 2.95;
+        } else if (d >= 73.0 && d <= 80.0) {
+            return 3.00 + (d - 73) * 0.1;
+        } else if (d >= 81.0 && d <= 85.0) {
+            return 3.75 + (d - 81) * 0.05;
+        } else if (d >= 86.0 && d <= 89.0) {
+            return 4.00 + (d - 86) * 0.1;
+        } else {
+            return 1.00;
+        }
     }
 
     public String getSemesterName() {

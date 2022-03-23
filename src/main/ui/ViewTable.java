@@ -18,7 +18,6 @@ public class ViewTable extends JPanel implements ActionListener {
             "course name",
             "grade",
             "GPA"};
-    private JButton button = new JButton("back");
     public static final JFrame frame = new JFrame("view my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
 
 
@@ -37,9 +36,6 @@ public class ViewTable extends JPanel implements ActionListener {
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-        button.setHorizontalTextPosition(AbstractButton.CENTER);
-        button.addActionListener(this);
-        add(button);
     }
 
     private void addFirstRow(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
@@ -87,7 +83,7 @@ public class ViewTable extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        frame.setVisible(false);
+
 
 
     }

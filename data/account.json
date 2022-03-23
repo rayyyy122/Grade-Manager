@@ -1,10 +1,13 @@
-{"semesters": [
-    {
-        "courses": [],
-        "Description": "fuck"
-    },
-    {
-        "courses": [],
-        "Description": "fuckfuck"
-    }
-]}
+{"semesters": [{
+    "courses": [
+        {
+            "grade": 10,
+            "name": "c"
+        },
+        {
+            "grade": 49,
+            "name": "c"
+        }
+    ],
+    "Description": "test"
+}]}
