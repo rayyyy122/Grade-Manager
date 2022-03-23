@@ -81,6 +81,10 @@ public class SemesterTest {
         semester.addCourse(course);
         Double d = semester.calculateGPA();
         assertEquals(2.6, d);
+        Semester semester89 = new Semester("89");
+        Course course89 = new Course("89", 89);
+        semester89.addCourse(course89);
+        assertEquals(4.3, semester89.calculateGPA());
 
 
     }
@@ -100,5 +104,12 @@ public class SemesterTest {
         Semester semester4 = new Semester("77");
         semester4.addCourse(course5);
         assertEquals(3.4, semester4.calculateGPA());
+        Semester semester71 = new Semester("71");
+        Course course71 = new Course("71", 71);
+        semester71.addCourse(course71);
+        assertEquals(2.9, semester71.calculateGPA());
+        Semester semester86 = new Semester("86");
+        semester86.addCourse(course4);
+        assertEquals(4.0, semester86.calculateGPA());
     }
 }
