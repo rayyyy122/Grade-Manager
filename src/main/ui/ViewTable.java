@@ -4,11 +4,15 @@ import model.Account;
 import model.Course;
 import model.Semester;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -19,7 +23,7 @@ public class ViewTable extends JPanel implements ActionListener {
             "grade",
             "GPA"};
     public static final JFrame frame = new JFrame("view my grade" + " ( total GPA: " + Semester.TotalGPA + " )");
-
+    private ImageIcon icon;
 
 
     public ViewTable(String semesterName) {
@@ -36,7 +40,20 @@ public class ViewTable extends JPanel implements ActionListener {
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
+
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(new File("./data/grade.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        icon = new ImageIcon(image);
+        JLabel imageLabel = new JLabel(icon);
+        add(imageLabel);
     }
+
+
 
     private void addFirstRow(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
         for (int i = 0; i < 1; i++) {
@@ -68,7 +85,6 @@ public class ViewTable extends JPanel implements ActionListener {
         //Create and set up the window.
 
 
-
         //Create and set up the content pane.
         ViewTable newContentPane = new ViewTable(name);
         newContentPane.setOpaque(true);//content panes must be opaque
@@ -83,7 +99,6 @@ public class ViewTable extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
 
 
     }

@@ -85,7 +85,7 @@ public class SemesterTest {
         Course course89 = new Course("89", 89);
         semester89.addCourse(course89);
         assertEquals(4.3, semester89.calculateGPA());
-        assertEquals(4.2, semester.convertPercentage(88));
+
 
 
     }
