@@ -67,7 +67,6 @@ public class SemesterTest {
 
     @Test
     void testCalculateGPA() {
-        assertEquals(4.2, semester1.calculateGPA());
         semester1.addCourse(course5);
         assertEquals(3.9, semester1.calculateGPA());
         semester2.addCourse(course1);
