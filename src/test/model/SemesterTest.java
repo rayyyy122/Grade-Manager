@@ -85,6 +85,10 @@ public class SemesterTest {
         Course course89 = new Course("89", 89);
         semester89.addCourse(course89);
         assertEquals(4.3, semester89.calculateGPA());
+        Semester semester88 = new Semester("88");
+        Course course88 = new Course("88", 88);
+        semester88.addCourse(course88);
+        assertEquals(4.2, semester88.calculateGPA());
 
 
 
@@ -112,5 +116,6 @@ public class SemesterTest {
         Semester semester86 = new Semester("86");
         semester86.addCourse(course4);
         assertEquals(4.0, semester86.calculateGPA());
+
     }
 }
