@@ -82,12 +82,22 @@ public class Semester extends NotCourseInTheListException implements Writable {
             return 3.00 + (d - 73) * 0.1;
         } else if (d >= 81.0 && d <= 85.0) {
             return 3.75 + (d - 81) * 0.05;
-        } else if (d >= 86.0 && d <= 89.0) {
-            return 4.00 + (d - 86) * 0.1;
-        } else if (d <= 49.0 && d >= 0) {
-            return 1.00;
         } else {
-            return 0;
+            return extracted(d);
+        }
+    }
+
+    private double extracted(double d) {
+        if (d == 86.0) {
+            return 4.00;
+        } else if (d == 87.0) {
+            return 4.10;
+        } else if (d == 88.0) {
+            return 4.20;
+        } else if (d == 89.0) {
+            return 4.30;
+        } else {
+            return 1.00;
         }
     }
 

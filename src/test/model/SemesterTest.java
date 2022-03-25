@@ -115,10 +115,7 @@ public class SemesterTest {
         Semester semester86 = new Semester("86");
         semester86.addCourse(course4);
         assertEquals(4.0, semester86.calculateGPA());
-        Semester semester1m = new Semester("-1");
-        Course course1m = new Course("-1", -1);
-        semester1m.addCourse(course1m);
-        assertEquals(0, semester1m.calculateGPA());
+
 
     }
 }
