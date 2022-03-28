@@ -14,6 +14,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     JButton manageGrade = new JButton("manage my grade");
     JButton saveOptions = new JButton("save options");
     JButton quit = new JButton("quit");
+    JDesktopPane desktop = new JDesktopPane();
     private static final String JSON_SOURCE = "./data/account.json";
     public static final Account account = new Account();
 
@@ -69,6 +70,8 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
     }
 
 
+
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("view my grade")) {
@@ -80,7 +83,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
             } else {
                 ViewSemesterNamePanel.createAndShowTable();
             }
-
         } else if (e.getActionCommand().equals("compare my grade")) {
             ComparePanel.createAndShowPanel();
         } else if (e.getActionCommand().equals("manage my account")) {
@@ -90,10 +92,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
         } else if (e.getActionCommand().equals("save options")) {
             SaveOptionsPanel.createAndShowPanel();
         } else if (e.getActionCommand().equals("quit")) {
-            Quit.createAndShowGUI();
-            System.exit(0);
-
-
+            LogScreen.createAndShowGUI();
         }
 
     }

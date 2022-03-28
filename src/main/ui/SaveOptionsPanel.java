@@ -1,6 +1,7 @@
 package ui;
 
 import model.Account;
+import model.EventLog;
 import model.Semester;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -94,8 +95,9 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
             loadAccount();
             ArrayList<Semester> semesters = account.getSemester();
             for (int i = 0; i < semesters.size(); i++) {
-                GradeManagerAppGUI.account.addSemester(semesters.get(i));
+                GradeManagerAppGUI.account.addSemesterDirect(semesters.get(i));
             }
+            EventLog.getInstance().clear();
             JFrame frame = new JFrame();
             JOptionPane.showMessageDialog(frame, "load successful!");
 

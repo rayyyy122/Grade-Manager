@@ -3,10 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class Quit extends JPanel {
+public class QuitPanel extends JPanel {
 
 
-    public Quit() {
+    public QuitPanel() {
         super(new BorderLayout());
     }
 
@@ -18,7 +18,7 @@ public class Quit extends JPanel {
 
 
         //Create and set up the content pane.
-        Quit newContentPane = new Quit();
+        QuitPanel newContentPane = new QuitPanel();
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

@@ -27,6 +27,8 @@ public class Semester extends NotCourseInTheListException implements Writable {
     //EFFECTS: adds a new course to the lists of courses in a semester
     public ArrayList<Course> addCourse(Course course) {
         this.courses.add(new Course(course.getName(), course.getGrade()));
+        EventLog.getInstance().logEvent(new Event("Add Course " + course.getName() + " with "
+                + course.getGrade() + " to Semester " + name));
         return courses;
     }
 
@@ -38,6 +40,7 @@ public class Semester extends NotCourseInTheListException implements Writable {
         for (int position = 0; position < courses.size(); position++) {
             if (courses.get(position).getName().equals(courseName)) {
                 courses.remove(position);
+                EventLog.getInstance().logEvent(new Event("Delete Course " + courseName + " from semester " + name));
             }
         }
         if (courses.size() == originalSize) {

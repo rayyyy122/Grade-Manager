@@ -22,10 +22,11 @@ public class Account implements Writable {
     public boolean addSemester(String name) {
         this.name = name;
         Semester s = new Semester(name);
+        EventLog.getInstance().logEvent(new Event("Add Semester: " + name));
         return this.account.add(s);
     }
 
-    public boolean addSemester(Semester s) {
+    public boolean addSemesterDirect(Semester s) {
         return this.account.add(s);
     }
 
@@ -44,6 +45,7 @@ public class Account implements Writable {
         for (int position = 0; position < account.size(); position++) {
             if (account.get(position).getSemesterName().equals(semesterName)) {
                 account.remove(position);
+                EventLog.getInstance().logEvent(new Event("Delete Semester: " + semesterName));
             }
         }
         return account;
