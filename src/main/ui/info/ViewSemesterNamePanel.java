@@ -1,7 +1,8 @@
-package ui;
+package ui.info;
 
 import model.Course;
 import model.Semester;
+import ui.GradeManagerAppGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -1,8 +1,9 @@
-package ui;
+package ui.compare;
 
 import model.Account;
 import model.Course;
 import model.Semester;
+import ui.GradeManagerAppGUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

@@ -1,27 +1,29 @@
-package ui;
+package ui.account;
 
-import model.Semester;
+import ui.GradeManagerAppGUI;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class DeleteSemesterPanel extends JPanel implements ActionListener {
+public class AddSemesterPanel extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JLabel label;
+    private String semesterName;
     private JButton button = new JButton("back");
-    public static final JFrame frame = new JFrame("delete a semester");
+    public static final JFrame frame = new JFrame("add a semester");
 
 
-    public DeleteSemesterPanel() {
+    private static final String newline = "\n";
+
+    public AddSemesterPanel() {
         super(new GridBagLayout());
 
         textField = new JTextField(40);
         textField.addActionListener(this);
 
-        label = new JLabel("enter the name of the semester you want to delete");
+        label = new JLabel("enter the name of the semester you want to add");
 
         //Add Components to this panel.
         GridBagConstraints c = new GridBagConstraints();
@@ -36,14 +38,18 @@ public class DeleteSemesterPanel extends JPanel implements ActionListener {
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.addActionListener(this);
         add(button);
+
+
+
     }
 
     public static void createAndShowPanel() {
         //Create and set up the window.
 
 
+
         //Add contents to the window.
-        frame.add(new DeleteSemesterPanel());
+        frame.add(new AddSemesterPanel());
 
         //Display the window.
         frame.pack();
@@ -52,24 +58,14 @@ public class DeleteSemesterPanel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String semesterName = textField.getText();
-        ArrayList<String> semesterNames = new ArrayList<>();
-        ArrayList<Semester> semesters = GradeManagerAppGUI.account.getSemester();
-        for (int i = 0; i < semesters.size(); i++) {
-            String name = semesters.get(i).getSemesterName();
-            semesterNames.add(name);
-        }
         if (e.getActionCommand().equals("back")) {
             frame.setVisible(false);
-        } else if (!semesterNames.contains(semesterName)) {
-            JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame, "there isn't such a semester!");
         } else {
-            GradeManagerAppGUI.account.deleteSemester(semesterName);
+            semesterName = textField.getText();
+            GradeManagerAppGUI.account.addSemester(semesterName);
             JFrame frame = new JFrame();
-            JOptionPane.showMessageDialog(frame, "delete successful!");
+            JOptionPane.showMessageDialog(frame, "add successful!");
         }
-
 
     }
 }

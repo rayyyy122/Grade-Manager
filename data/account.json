@@ -1,53 +1,16 @@
 {"semesters": [
     {
-        "courses": [
-            {
-                "grade": 89,
-                "name": "c"
-            },
-            {
-                "grade": 87,
-                "name": "c"
-            },
-            {
-                "grade": 86,
-                "name": "c"
-            },
-            {
-                "grade": 85,
-                "name": "c"
-            },
-            {
-                "grade": 84,
-                "name": "c"
-            },
-            {
-                "grade": 83,
-                "name": "c"
-            },
-            {
-                "grade": 82,
-                "name": "c"
-            },
-            {
-                "grade": 81,
-                "name": "c"
-            }
-        ],
-        "Description": "t"
-    },
-    {
-        "courses": [{
-            "grade": 83,
-            "name": "c"
-        }],
-        "Description": "a"
-    },
-    {
         "courses": [{
             "grade": 90,
             "name": "cpsc"
         }],
         "Description": "2020"
+    },
+    {
+        "courses": [{
+            "grade": 70,
+            "name": "math"
+        }],
+        "Description": "2021"
     }
 ]}

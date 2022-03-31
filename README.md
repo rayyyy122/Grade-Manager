@@ -47,3 +47,7 @@ Delete Course math from semester 2020
 
 Mon Mar 28 15:37:51 PDT 2022
 Delete Semester: 2020
+
+Phase 4: Task 3:
+
+If I have time, I will create some Interfaces and abstract classes to reduce duplication.

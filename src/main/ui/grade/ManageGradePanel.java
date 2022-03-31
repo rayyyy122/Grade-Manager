@@ -1,4 +1,4 @@
-package ui;
+package ui.grade;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

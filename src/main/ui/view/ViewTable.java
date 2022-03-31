@@ -1,8 +1,9 @@
-package ui;
+package ui.view;
 
 import model.Account;
 import model.Course;
 import model.Semester;
+import ui.GradeManagerAppGUI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

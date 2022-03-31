@@ -55,7 +55,12 @@ public class LogScreen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("close")) {
             QuitPanel.createAndShowGUI();
+            for (Event event: EventLog.getInstance()) {
+                System.out.println(event.toString());
+            }
+            EventLog.getInstance().clear();
             System.exit(0);
+
         }
 
 

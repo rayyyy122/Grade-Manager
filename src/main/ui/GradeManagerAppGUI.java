@@ -1,6 +1,13 @@
 package ui;
 
 import model.Account;
+import model.Event;
+import model.EventLog;
+import ui.account.ManageAccountPanel;
+import ui.compare.ComparePanel;
+import ui.grade.ManageGradePanel;
+import ui.info.ViewSemesterNamePanel;
+import ui.view.ViewPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -93,6 +100,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
             SaveOptionsPanel.createAndShowPanel();
         } else if (e.getActionCommand().equals("quit")) {
             LogScreen.createAndShowGUI();
+
         }
 
     }
