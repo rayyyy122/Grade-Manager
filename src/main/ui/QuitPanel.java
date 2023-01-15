@@ -10,12 +10,12 @@ public class QuitPanel extends JPanel {
         super(new BorderLayout());
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("Quit");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JOptionPane.showMessageDialog(frame, "quit successful!");
-
 
         //Create and set up the content pane.
         QuitPanel newContentPane = new QuitPanel();

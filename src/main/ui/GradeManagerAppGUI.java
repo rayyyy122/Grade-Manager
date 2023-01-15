@@ -51,7 +51,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
 
     }
 
-
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowGui() {
         JFrame frame = new JFrame("Grade Manager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,7 +78,7 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
 
 
 
-
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("view my grade")) {
@@ -100,8 +100,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
             SaveOptionsPanel.createAndShowPanel();
         } else if (e.getActionCommand().equals("quit")) {
             LogScreen.createAndShowGUI();
-
         }
-
     }
 }

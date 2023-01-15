@@ -32,14 +32,13 @@ public class LogScreen extends JPanel implements ActionListener {
         for (Event next : el) {
             textArea.setText(textArea.getText() + next.toString() + "\n\n");
         }
-
         repaint();
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("Event Log");
-
 
         //Create and set up the content pane.
         LogScreen newContentPane = new LogScreen();

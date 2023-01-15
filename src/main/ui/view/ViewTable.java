@@ -56,6 +56,7 @@ public class ViewTable extends JPanel implements ActionListener {
 
 
 
+    // EFFECTS: add first row to the table
     private void addFirstRow(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
         for (int i = 0; i < 1; i++) {
             String courseName = courses.get(i).getName();
@@ -69,6 +70,7 @@ public class ViewTable extends JPanel implements ActionListener {
         }
     }
 
+    // EFFECTS: add rows below the first one to the table
     private void addLeftRows(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
         for (int i = 1; i < courses.size(); i++) {
             String courseName = courses.get(i).getName();
@@ -82,25 +84,20 @@ public class ViewTable extends JPanel implements ActionListener {
         }
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowTable(String name) {
-        //Create and set up the window.
-
-
         //Create and set up the content pane.
         ViewTable newContentPane = new ViewTable(name);
         newContentPane.setOpaque(true);//content panes must be opaque
         frame.setContentPane(newContentPane);
 
-
         //Display the window.
         frame.pack();
         frame.setVisible(true);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
 
     }
 }

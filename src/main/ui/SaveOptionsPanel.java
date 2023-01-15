@@ -39,8 +39,8 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
         add(button);
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-
         //Create and set up the content pane.
         SaveOptionsPanel newContentPane = new SaveOptionsPanel();
         newContentPane.setOpaque(true); //content panes must be opaque
@@ -83,6 +83,7 @@ public class SaveOptionsPanel extends JPanel implements ActionListener {
         });
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("back")) {

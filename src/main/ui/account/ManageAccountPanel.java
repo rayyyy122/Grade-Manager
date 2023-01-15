@@ -24,15 +24,12 @@ public class ManageAccountPanel extends JPanel implements ActionListener {
         add(button);
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-
-
-
         //Create and set up the content pane.
         ManageAccountPanel newContentPane = new ManageAccountPanel();
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
-
 
         //Display the window.
         frame.pack();
@@ -47,6 +44,7 @@ public class ManageAccountPanel extends JPanel implements ActionListener {
         });
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("back")) {

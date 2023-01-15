@@ -1,6 +1,6 @@
 # Grade Manager
 
-## a application keeping track of academic performance
+## an application keeping track of academic performance
 
 This application is basically a comprehensive recorder of students' grades. 
 It is designed for students especially undergraduate 

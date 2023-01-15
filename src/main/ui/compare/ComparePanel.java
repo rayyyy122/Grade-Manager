@@ -17,22 +17,16 @@ public class ComparePanel extends JPanel implements ActionListener {
     private JButton button = new JButton("back");
     public static final JFrame frame = new JFrame("compare my grade");
 
-
-
-
     public ComparePanel() {
         super(new GridBagLayout());
 
         textField1 = new JTextField(40);
         textField1.addActionListener(this);
-
         textField2 = new JTextField(40);
         textField2.addActionListener(this);
 
         label1 = new JLabel("Enter the name of the first semester");
         label2 = new JLabel("Enter the name of the second semester");
-
-
 
         //Add Components to this panel.
         GridBagConstraints c = new GridBagConstraints();
@@ -49,15 +43,10 @@ public class ComparePanel extends JPanel implements ActionListener {
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.addActionListener(this);
         add(button);
-
-
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-        //Create and set up the window.
-
-
-
         //Add contents to the window.
         frame.add(new ComparePanel());
 
@@ -76,6 +65,7 @@ public class ComparePanel extends JPanel implements ActionListener {
         });
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         String name1 = textField1.getText();

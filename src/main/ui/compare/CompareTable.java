@@ -40,8 +40,6 @@ public class CompareTable extends JPanel implements ActionListener {
         table.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane);
-
-
     }
 
     private void addFirstRow(ArrayList<Course> courses, String semesterName, DefaultTableModel model, Double g) {
@@ -70,21 +68,17 @@ public class CompareTable extends JPanel implements ActionListener {
         }
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowTable(String name1, String name2) {
-        //Create and set up the window.
-
-
         //Create and set up the content pane.
         CompareTable newContentPane = new CompareTable(name1, name2);
         newContentPane.setOpaque(true);//content panes must be opaque
         frame.setContentPane(newContentPane);
 
-
         //Display the window.
         frame.pack();
         frame.setVisible(true);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -51,14 +51,10 @@ public class AddCoursePanel extends JPanel implements ActionListener {
         button.setHorizontalTextPosition(AbstractButton.CENTER);
         button.addActionListener(this);
         add(button);
-
-
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-        //Create and set up the window.
-
-
         //Add contents to the window.
         frame.add(new AddCoursePanel());
 
@@ -79,6 +75,7 @@ public class AddCoursePanel extends JPanel implements ActionListener {
 
     }
 
+    // EFFECTS: justify whether the account contain the input semester
     private boolean containSemester(String name) {
         ArrayList<String> semesterNames = new ArrayList<>();
         ArrayList<Semester> semesters = GradeManagerAppGUI.account.getSemester();
@@ -89,6 +86,7 @@ public class AddCoursePanel extends JPanel implements ActionListener {
         return semesterNames.contains(name);
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         semesterName = textField.getText();

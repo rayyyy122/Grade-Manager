@@ -50,11 +50,8 @@ public class DeleteCoursePanel extends JPanel implements ActionListener {
         add(button);
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-        //Create and set up the window.
-
-
-
         //Add contents to the window.
         frame.add(new DeleteCoursePanel());
 
@@ -63,6 +60,7 @@ public class DeleteCoursePanel extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         String semesterName = textField.getText();

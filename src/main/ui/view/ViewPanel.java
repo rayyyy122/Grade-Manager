@@ -44,11 +44,8 @@ public class ViewPanel extends JPanel implements ActionListener {
 
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
-        //Create and set up the window.
-
-
-
         //Add contents to the window.
         frame.add(new ViewPanel());
 
@@ -56,7 +53,6 @@ public class ViewPanel extends JPanel implements ActionListener {
         frame.pack();
         frame.setVisible(true);
     }
-
 
     public static void main(String[] args) {
         //Schedule a job for the event dispatch thread:
@@ -69,6 +65,7 @@ public class ViewPanel extends JPanel implements ActionListener {
     }
 
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         semesterName = textField.getText();

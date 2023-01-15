@@ -43,6 +43,7 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
 
     }
 
+    // EFFECTS: create and show the graphical user interface
     public static void createAndShowPanel() {
         //Create and set up the window.
 
@@ -56,6 +57,7 @@ public class AddSemesterPanel extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
+    // EFFECTS: calls each sub-panel when click corresponding button
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("back")) {
