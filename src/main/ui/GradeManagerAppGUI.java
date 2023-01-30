@@ -71,7 +71,6 @@ public class GradeManagerAppGUI extends JPanel implements ActionListener {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGui();
-
             }
         });
     }
